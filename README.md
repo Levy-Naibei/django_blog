@@ -1,4 +1,4 @@
-#Django Blog App
+##Django Blog App
 
 ## Home page
 * Create an account in order to view posts or create or update a blog post
