@@ -1,7 +1,7 @@
 ## Django Blog App
 
 ## Home page
-* Create an account in order to view posts or create or update a blog post
+* Create an account in order to create or update a blog post
 * Click on your user name while logged in to see your total posts
 * click on post title to see detail of post and update or delete if you created
 * Navigate to other pages using the pagination at bottom of page
@@ -13,8 +13,8 @@
 ## Built With
 
 * [Django Framework](https://docs.djangoproject.com/en/2.1/)
-* [HTML](https://www.w3schools.com/html/html_intro.asp) - Structure of the web pages
-* [CSS](https://www.w3schools.com/css/) - Styling of some and page elements
+* [HTML](https://www.w3schools.com/html/html_intro.asp) 
+* [CSS](https://www.w3schools.com/css/)
 * [Bootrap 4](https://www.w3schools.com/bootstrap4/bootstrap_get_started.asp) 
 
 ## Developer
