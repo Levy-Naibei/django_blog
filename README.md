@@ -1,5 +1,7 @@
 #Django Blog App
 
+![homepage](https://user-images.githubusercontent.com/26874683/56417692-5d869780-629d-11e9-9be3-af56e21184d5.PNG)
+
 ## Home page
 * Create an account in order to view posts or create or update a blog post
 * Click on your user name while logged in to see your total posts
