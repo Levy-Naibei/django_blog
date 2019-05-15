@@ -1,8 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Post
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.forms import modelformset_factory
 from django.views.generic import (
 		 ListView,
 		 DetailView, 
@@ -38,15 +40,15 @@ class PostDetailView(DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
 	model = Post
-	fields = ['title', 'content']
+	fields = ['title', 'content', 'pic']
 
 	def form_valid(self, form):
-		form.instance.author = self.request.user
+		form.instance.author = self.request.user		
 		return super().form_valid(form)
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = Post
-	fields = ['title', 'content']
+	fields = ['title', 'content', 'pic']
 
 	def form_valid(self, form):
 		form.instance.author = self.request.user
@@ -70,6 +72,17 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 		if self.request.user == post.author:
 			return True
 		return False							
+
+def like_post(request):	
+	post = get_object_or_404(Post, id=request.POST.get('post_id'))
+	is_liked = False
+	if post.likes.filter(id = request.user.id).exists():
+		post.likes.remove(request.user)
+		is_liked = False
+	else:
+		post.likes.add(request.user)
+		is_liked = True
+	return HttpResponseRedirect(post.get_absolute_url())		
 
 def about(request):
 	return render(request, 'blog/about.html', {'title':'About Us'})	
