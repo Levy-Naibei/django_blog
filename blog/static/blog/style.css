@@ -2,7 +2,7 @@ body {
   background: #fafafa;
   color: #333333;
   margin-top: 5rem;
-  font-family:'Lucida Casaul', 'Comic Sans MS';
+  font-family: initial;
 }
 
 h1, h2, h3, h4, h5 {
@@ -18,7 +18,7 @@ ul {
 }
 
 .bg-steel {
-  background-color: #5f788a;
+  background-color: #26272c;
 }
 
 .site-header .navbar-nav .nav-link {
@@ -43,6 +43,7 @@ ul {
 
 .article-title {
   color: #444444;
+  font-style: bold;
 }
 
 a.article-title:hover {
@@ -86,4 +87,8 @@ a.article-title:hover {
 
 .account-heading {
   font-size: 1.5rem;
+}
+
+footer {
+  background-color: #26272c;
 }
