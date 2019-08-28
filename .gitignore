@@ -105,6 +105,10 @@ ENV/
 env.bak/
 venv.bak/
 
+env
+*.pyc
+db.sqlite3
+
 # Spyder project settings
 .spyderproject
 .spyproject
