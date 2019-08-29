@@ -8,8 +8,8 @@
       <div class="media-body">
       <h5><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h5>
         <div class="article-metadata">
-          <a class="mr-2" href="{% url 'user-posts' post.author.username %}">Posted by {{ post.author }}</a>
-          <small class="text-muted">on {{ post.date_posted|date:'F d, Y' }}</small>
+          Posted by <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }} </a>
+          <small class="text-muted">{{ post.date_posted|date:'F d, Y' }}</small>
         </div>
             <p class="article-content">{{ post.content }}</p> 
       </div>

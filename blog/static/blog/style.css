@@ -44,6 +44,7 @@ ul {
 .article-title {
   /* color: #444444; */
   font-style: bold;
+  border-bottom: 1px solid #e3e3e3
 }
 
 a.article-title:hover {
@@ -64,7 +65,6 @@ a.article-title:hover {
 .article-metadata {
   padding-bottom: 1px;
   margin-bottom: 4px;
-  border-bottom: 1px solid #e3e3e3
 }
 
 .article-metadata a:hover {
