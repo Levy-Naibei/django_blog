@@ -42,9 +42,8 @@ ul {
 }
 
 .article-title {
-  /* color: #444444; */
   font-style: bold;
-  border-bottom: 1px solid #e3e3e3
+  border-bottom: 2px solid #e1e1e1
 }
 
 a.article-title:hover {
@@ -53,6 +52,7 @@ a.article-title:hover {
 }
 
 .article-content {
+  margin-top: 2px;
   white-space: pre-line;
 }
 
