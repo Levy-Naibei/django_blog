@@ -11,7 +11,7 @@
           Posted by <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }} </a>
           <small class="text-muted">{{ post.date_posted|date:'F d, Y' }}</small>
         </div>
-          {% if post.content|wordcount > 10 %}
+          {% if post.content|wordcount > 20 %}
                {{ post.content|linebreaks|safe|truncatewords:20}}
                <a href="{% url 'post-detail' post.id %}">read more</a>
           {% else %}

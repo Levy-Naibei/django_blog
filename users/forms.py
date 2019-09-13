@@ -6,7 +6,7 @@ from .models import Profile
 class UserRegisterForm(UserCreationForm):
 	email = forms.EmailField()
 
-	#class must be indented and class name in caps
+	#class must be indented and class name start in caps
 	class Meta:
 		model = User
 		fields = ['username','email', 'password1','password2']
