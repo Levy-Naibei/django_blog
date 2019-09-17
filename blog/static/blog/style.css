@@ -33,6 +33,10 @@ ul {
   font-weight: 500;
 }
 
+nav-item {
+  border: 1px solid #26272c;
+}
+
 .content-section {
   background: #ffffff;
   padding: 10px 20px;
