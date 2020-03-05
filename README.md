@@ -11,6 +11,7 @@
 ## Running the application
 * Clone the repository by doing `git clone https://github.com/Levy-Naibei/django_blog.git` on the terminal 
 * Copy and paste 127.0.0.1/8000 on your browser
+* Visit the site: https://levynaibei-blog-app.herokuapp.com/
   
 ## Built With
 
