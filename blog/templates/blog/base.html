@@ -1,130 +1,121 @@
-﻿{% load static %}
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
+{% load static %}
 <html>
-<head>
-	<!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <head>
+    <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 
-    <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
-    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}"/>
+      <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
+      <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}"/>
 
-  	{% if title %}
-  		<title>{{title}}</title>
-  	{% else %}
-  		<title>Django Blog</title>	
-  	{% endif %}
-</head>
-<body>
-	<header class="site-header">
-    <nav class="navbar navbar-expand-md navbar-dark bg-info fixed-top">
-      <div class="container">
-        <a class="navbar-brand mr-4" href="{% url 'blog-home' %}">
-          <img class="article-img rounded-circle" src="{% static "logo.png" %}" alt="Logo">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarToggle">
-          <div class="navbar-nav mr-auto">
-            <a class="nav-item nav-link active" href="{% url 'blog-home' %}">Home</a>
-            <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
-          </div>
-          <!-- Navbar Right Side -->
-          <div class="navbar-nav">
-            {% if user.is_authenticated %}
-              <a class="nav-item nav-link" href="{% url 'post-create' %}">New Post</a>
-              <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
-              <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
-            {% else %}
-              <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
-              <a class="nav-item nav-link " href="{% url 'register' %}">Sign Up</a>
-            {% endif %} 
-          </div>
-        </div>
-      </div>
-    </nav>
-  </header>
-      
-  <main role="main" class="container">
-    <div class="row">
-      <div class="col-md-8">
-        
-        {% if messages %}
-          {% for message in messages %}
-            <div class="alert alert-{{message.tags}}">
-              {{message}}
+      {% if title %}
+        <title>{{title}}</title>
+      {% else %}
+        <title>Django Blog</title>	
+      {% endif %}
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-info fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="{% url 'blog-home' %}">
+            <img class="article-img rounded-circle" src="{% static "logo.png" %}" alt="Logo">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link active" href="{% url 'blog-home' %}">Home</a>
+              <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
             </div>
-          {% endfor %}
-        {% endif %}
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+              {% if user.is_authenticated %}
+                <a class="nav-item nav-link" href="{% url 'post-create' %}">New Post</a>
+                <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+                <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+              {% else %}
+                <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                <a class="nav-item nav-link " href="{% url 'register' %}">Sign Up</a>
+              {% endif %} 
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+        
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{message.tags}}">
+                {{message}}
+              </div>
+            {% endfor %}
+          {% endif %}
 
-        {% block content %}{% endblock %}
-      </div>
-
-      <div class="col-md-4">
-        <h4 class="mb-2">Secondary menu</h4>
-        <ul class="nav flex-column nav-pills mb-3">
-          <li class="nav-item"><a class="nav-link active" href="#"> Important update</a></li>
-
-          <li class="nav-item"><a class="nav-link" href="#">more info </a></li>
-
-          <li class="nav-item"> <a class="nav-link disabled" href="#">Disabled</a></li>
-        </ul>
-
-        <div class="jumbotron">
-          <h4 class="">See. Learn. Do. </h4>
-          <p class="lead">Doing it Django way</p>
-          <p class="lead">
-            <a class="btn btn-primary btn-md" href="#" role ="button">more</a>
-          </p>
+          {% block content %}{% endblock %}
         </div>
 
-        <div class="content-section">
-          <h4>Side nav</h4>
-          <p class='text-muted'>Trending Topics
-            <ul class="list-group">
-             <a class="list-group-item list-group-item-light href="#">Get Connected</a>
-             <a class="list-group-item list-group-item-light href="#">Summary</a>
-             <a class="list-group-item list-group-item-light href="#">Breakfast</a>
-            </ul>
-          </p>
+        <div class="col-md-4">
+
+          <div class="content-section">
+            <h4>Most Recent Posts</h4>
+            <p class='text-muted'>Trending Topics
+              {% for post in recent %}
+              <ul class="list-group">
+              <a class="list-group-item list-group-item-light" href="{% url 'post-detail' pk=post.pk %}">{{ post.title }}</a>
+              </ul>
+              {% endfor %}
+            </p>
+          </div>
+
+          <div class="jumbotron">
+            <h4 class="">See. Learn. Do. </h4>
+            <p class="lead">Doing it Django way</p>
+            <p class="lead">
+              <a class="btn btn-primary btn-md" href="#" role ="button">more</a>
+            </p>
+          </div>
+    
+          <div class="content-section">
+            <h4>Extras</h4>
+            <p class='text-muted'>Add here any info
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-light">My likes</li>
+                <li class="list-group-item list-group-item-light">Follow me</li>
+                <li class="list-group-item list-group-item-light">My Events</li>
+                <li class="list-group-item list-group-item-light">...</li>
+              </ul>
+            </p>
         </div>
-        <div class="content-section">
-          <h4>Extras</h4>
-          <p class='text-muted'>Add here any info
-            <ul class="list-group">
-              <li class="list-group-item list-group-item-light">My likes</li>
-              <li class="list-group-item list-group-item-light">Follow me</li>
-              <li class="list-group-item list-group-item-light">My Events</li>
-              <li class="list-group-item list-group-item-light">...</li>
-            </ul>
-          </p>
-       </div>
+        </div>
       </div>
-     </div>
-    </div>
-  </main>	
+    </main>	
 
-  <footer class="m-1 pt-5 pb-4 text-center text-small text-light bg-info">
-    <p class="mb-1">&copy;2019 Levite, Inc | All Rights Reserved</p>
-    <ul class="list-inline">
-      <li class="list-inline-item"><a href="#">Privacy</a> &nbsp;<b>&middot;</b> </li>
-      <li class="list-inline-item"><a href="#">Terms</a> &nbsp;<b>&middot;</b> </li>
-      <li class="list-inline-item"><a href="#">Support</a></li>
-    </ul>
-  </footer>
+    <footer class="m-1 pt-5 pb-4 text-center text-small text-dark bg-info">
+      <p class="mb-1">&copy;2019 Levite, Inc. All Rights Reserved</p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="#">Privacy</a> &nbsp;<b>&middot;</b> </li>
+        <li class="list-inline-item"><a href="#">Terms</a> &nbsp;<b>&middot;</b> </li>
+        <li class="list-inline-item"><a href="#">Support</a></li>
+      </ul>
+    </footer>
 
-	<!-- Optional JavaScript -->
-    <!---If you’re using our compiled JavaScript, don’t forget to include CDN versions of jQuery and Popper.js before it. jQuery first, then Popper.js, then Bootstrap JS--->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+      {% comment %} <!---If you’re using our compiled JavaScript, don’t forget to include CDN versions of jQuery and Popper.js before it. jQuery first, then Popper.js, then Bootstrap JS--->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
-    <!---Skip the download with BootstrapCDN to deliver cached version of Bootstrap’s compiled CSS and JS to your project.--->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</body>
+      <!---Skip the download with BootstrapCDN to deliver cached version of Bootstrap’s compiled CSS and JS to your project.--->
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> {% endcomment %}
+  </body>
 </html>
