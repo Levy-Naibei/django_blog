@@ -1,4 +1,4 @@
-#!/home/levy/django_blog/env/bin/python3
+#!/home/levy/Desktop/django_blog/env/bin/python3
 
 # $Id: rst2html.py 4564 2006-05-21 20:44:42Z wiemann $
 # Author: David Goodger <goodger@python.org>

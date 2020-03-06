@@ -1,4 +1,4 @@
-#!/home/levy/django_blog/env/bin/python3
+#!/home/levy/Desktop/django_blog/env/bin/python3
 
 # $Id: rst2latex.py 5905 2009-04-16 12:04:49Z milde $
 # Author: David Goodger <goodger@python.org>
