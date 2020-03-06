@@ -82,33 +82,33 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 
 def about(request):
-        return render(request, 'blog/about.html', {'title':'About Us'})
+    return render(request, 'blog/about.html', {'title':'About Us'})
 
 def most_recent_posts(request):
-        recent = Post.objects.all().order_by('-date_posted')[:5]
-        return render(request, 'blog/base.html', {'recent': recent})
+    recent = Post.objects.all().order_by('-date_posted')[:5]
+    return render(request, 'blog/base.html', {'recent': recent})
 
-@login_required
-def add_comment_to_post(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    if request.method == 'POST':
-        form = CommentForm(request.POST)
-        if form.is_valid:
-            comment = form.save(commit=False)
-            comment.post=post
-            comment.save()
-            return redirect('post-detail', pk = post.pk)
-    else:
-        form = CommentForm()
-    return render (request, 'blog/add_comment_to_post.html', {'form':form, 'title': 'Comments'})
+# @login_required
+# def add_comment_to_post(request, pk):
+#     post = get_object_or_404(Post, pk=pk)
+#     if request.method == 'POST':
+#         form = CommentForm(request.POST)
+#         if form.is_valid:
+#             comment = form.save(commit=False)
+#             comment.post=post
+#             comment.save()
+#             return redirect('post-detail', pk = post.pk)
+#     else:
+#         form = CommentForm()
+#     return render (request, 'blog/comment_form.html', {'form':form, 'title': 'Comments'})
 
-# class CommentCreateView(LoginRequiredMixin, CreateView):
-#     	model = Comment
-# 		fields = ['author', 'text']
-
-# 	def form_valid(self, form):
-# 		form.instance.author = self.request.user		
-# 		return super().form_valid(form)
+class CommentCreateView(LoginRequiredMixin, CreateView):
+    model = Comment
+    fields = ['author','text','approved_comment']
+    
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 @login_required
 def comment_approve(request, pk):

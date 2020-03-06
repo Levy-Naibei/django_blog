@@ -8,7 +8,7 @@
       <div class="media-body">
         <h5><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h5>
         <div class="article-metadata">
-          By <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }} on </a>
+          By <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }} </a>
           <small class="text-muted">{{ post.date_posted|date:'F d, Y' }}</small>
         </div>
           {% if post.content|wordcount > 50 %}
@@ -18,7 +18,7 @@
                {{ post.content}}
           {% endif %}
 
-          <a href="{% url 'post-detail' pk=post.pk %}">Comment(s) {{ post.approved_comments.count }}</a>
+          <p><a href="{% url 'comment-create' pk=post.pk %}">Comment(s) {{ post.approved_comments.count }}</a></p>
             
       </div>
     </article>

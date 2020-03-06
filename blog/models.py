@@ -28,7 +28,7 @@ class Comment(models.Model):
     author = models.CharField(max_length=50)
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
-    approved_comment = models.BooleanField(False)
+    approved_comment = models.BooleanField(default=False)
 
     def get_absolute_url(self):
         return reverse("post-detail", kwargs={"pk": self.pk})
