@@ -9,7 +9,7 @@
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css">
 
       <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
       <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}"/>
@@ -72,7 +72,7 @@
             <p class='text-muted'>Trending Topics
               {% for post in recent %}
               <ul class="list-group">
-              <a class="list-group-item list-group-item-light" href="{% url 'post-detail' pk=post.pk %}">{{ post.title }}</a>
+              <a class="list-group-item list-group-item-light" href="{% url 'post-detail' post.id %}">{{ post.title }}</a>
               </ul>
               {% endfor %}
             </p>

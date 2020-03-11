@@ -24,7 +24,7 @@
   
   <!--Comments section-->
   <hr>
-  <a class="btn btn-success btn-sm" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
+  <a class="btn btn-success btn-sm" href="{% url 'comment-create' pk=post.pk %}">Add comment</a>
   
   {% for comment in post.comments.all %}
     {% if user.is_authenticated or comment.approved_comment %}
@@ -32,8 +32,8 @@
         <div class="date">
             {{ comment.created_date }}
             {% if not comment.approved_comment %}
-                <a class="btn btn-danger" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
-                <a class="btn btn-warning" href="{% url 'comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
+                <a class="btn btn-danger" href="{% url 'comment_remove' pk=comment.pk %}"><span class="far fa-times"></span></a>
+                <a class="btn btn-warning" href="{% url 'comment_approve' pk=comment.pk %}"><span class="fas fa-check-circle"></span></a>
             {% endif %}
         </div>
         <strong>{{ comment.author }}</strong>

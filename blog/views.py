@@ -5,7 +5,6 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Post, Comment
-from .forms import CommentForm
 from django.contrib.auth.models import User
 from django.views.generic import (
          ListView,
@@ -104,7 +103,7 @@ def most_recent_posts(request):
 
 class CommentCreateView(LoginRequiredMixin, CreateView):
     model = Comment
-    fields = ['author','text','approved_comment']
+    fields = ['author','text']
     
     def form_valid(self, form):
         form.instance.author = self.request.user
