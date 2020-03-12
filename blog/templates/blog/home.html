@@ -1,6 +1,5 @@
 {% extends "blog/base.html" %}
 {% block content %}
-
   <!--List of posts-->
 	{% for post in posts %}
     <article class="media content-section">
@@ -24,7 +23,6 @@
 
   <!-- Pagination-->
   {% if is_paginated %}
-
     {% if page_obj.has_previous %}
       <a class="btn btn-outline-info bt-sm mb-2 mt-2" href="?page=1">First</a>
       <a class="btn btn-outline-info bt-sm mb-2 mt-2" href="?page={{page_obj.previous_page_number}}">Previous</a>
@@ -42,8 +40,8 @@
       <a class="btn btn-outline-info bt-sm mb-2 mt-2" href="?page={{page_obj.next_page_number}}">Next</a>
       <a class="btn btn-outline-info bt-sm mb-2 mt-2" href="?page={{page_obj.paginator.num_pages}}">Last</a>
     {% endif %}
-
   {% endif %}
 
 {% endblock %}
 
+{% include "blog/footer.html" %}

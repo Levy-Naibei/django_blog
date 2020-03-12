@@ -5,6 +5,9 @@
 
 # C extensions
 *.so
+.vscode
+
+**/__pycache__/**
 
 # Distribution / packaging
 .Python

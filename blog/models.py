@@ -6,9 +6,6 @@ from django.utils import timezone
 
 # from PIL import Image
 
-def get_absolute_url():
-    return reverse("blog-home")
-
 
 class Post(models.Model):
     """docstring for posts table"""
@@ -17,6 +14,9 @@ class Post(models.Model):
     content = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def get_absolute_url(self):
+        return reverse("blog-home")
 
     # def approved_comments(self):
     #     return self.comments.filter(approved_comment=True)
