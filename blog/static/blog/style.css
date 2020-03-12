@@ -3,6 +3,7 @@ body {
   color: #333333;
   margin-top: 5rem;
   font-family: initial;
+  position: relative;
 }
 
 h1, h2, h3, h4, h6 {
@@ -100,7 +101,7 @@ a.article-title:hover {
 
 .footer2 {
   background-color: #26272c;
-  position: fixed !important;
+  position: absolute !important;
   bottom: 0 !important;
   width: 100% !important;
 }
