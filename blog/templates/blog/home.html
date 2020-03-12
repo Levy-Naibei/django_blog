@@ -17,8 +17,6 @@
           {% else %}
                {{ post.content}}
           {% endif %}
-
-          <p><a href="{% url 'comment-create' pk=post.pk %}">Comment(s) {{ post.approved_comments.count }}</a></p>
             
       </div>
     </article>

@@ -4,19 +4,21 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Post, Comment
+from .models import Post
+#  Comment
 from django.contrib.auth.models import User
 from django.views.generic import (
-         ListView,
-         DetailView,
-         CreateView,
-         UpdateView,
-         DeleteView
-         )
+    ListView,
+    DetailView,
+    CreateView,
+    UpdateView,
+    DeleteView
+)
 
-#def home(request):
-    #context = {'posts' : Post.objects.all() }
-    #return render(request, 'blog/home.html', context)
+
+# def home(request):
+# context = {'posts' : Post.objects.all() }
+# return render(request, 'blog/home.html', context)
 
 # use of class views instead of function views
 class PostListView(ListView):
@@ -37,8 +39,10 @@ class UserPostListView(ListView):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         return Post.objects.filter(author=user).order_by('-date_posted')
 
+
 class PostDetailView(DetailView):
     model = Post
+
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
@@ -47,6 +51,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
@@ -62,12 +67,13 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
             return True
         return False
 
-        #messages.success(request, f'Post updated successfully!')
-        #return redirect ('home')
+        # messages.success(request, f'Post updated successfully!')
+        # return redirect ('home')
         # class AuthorCreate(SuccessMessageMixin, CreateView):
         # 	 	model = Author
         # 		success_url = '/success/'
         # 		success_message = "Updated successfully"
+
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
@@ -81,11 +87,14 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 
 def about(request):
-    return render(request, 'blog/about.html', {'title':'About Us'})
+    return render(request, 'blog/about.html', {'title': 'About Us'})
+
 
 def most_recent_posts(request):
-    recent = Post.objects.all().order_by('-date_posted')[:5]
-    return render(request, 'blog/base.html', {'recent': recent})
+    recent = Post.objects.order_by('-date_posted')[:5]
+    data = {'posts': recent}
+    return render(request, 'blog/base.html', data)
+
 
 # @login_required
 # def add_comment_to_post(request, pk):
@@ -101,22 +110,24 @@ def most_recent_posts(request):
 #         form = CommentForm()
 #     return render (request, 'blog/comment_form.html', {'form':form, 'title': 'Comments'})
 
-class CommentCreateView(LoginRequiredMixin, CreateView):
-    model = Comment
-    fields = ['author','text']
-    
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
+# class CommentCreateView(LoginRequiredMixin, CreateView):
+#     model = Comment
+#     fields = ['text']
 
-@login_required
-def comment_approve(request, pk):
-    comment = get_object_or_404(Comment, pk=pk)
-    comment.approve()
-    return redirect('post-detail', pk=comment.post.pk)
+#     def form_valid(self, form):
+#         form.instance.author = self.request.user
+#         return super().form_valid(form)
 
-@login_required
-def comment_remove(request, pk):
-    comment = get_object_or_404(Comment, pk=pk)
-    comment.delete()
-    return redirect('post-detail', pk=comment.post.pk)
+
+# @login_required
+# def comment_approve(request, pk):
+#     comment = get_object_or_404(Comment, pk=pk)
+#     comment.approve()
+#     return redirect('post-detail', pk=comment.post.pk)
+
+
+# @login_required
+# def comment_remove(request, pk):
+#     comment = get_object_or_404(Comment, pk=pk)
+#     comment.delete()
+#     return redirect('post-detail', pk=comment.post.pk)

@@ -100,4 +100,5 @@ a.article-title:hover {
 
 footer {
   background-color: #26272c;
+  position: fixed !important;
 }

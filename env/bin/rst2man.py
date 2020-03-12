@@ -1,4 +1,4 @@
-#!/home/levy/Desktop/django_blog/env/bin/python3
+#!/home/levy/Desktop/django_blog/env/bin/python
 
 # Author: 
 # Contact: grubert@users.sf.net

@@ -23,8 +23,9 @@
   <!--like button-->
   
   <!--Comments section-->
+
+  <!--
   <hr>
-  <a class="btn btn-success btn-sm" href="{% url 'comment-create' pk=post.pk %}">Add comment</a>
   
   {% for comment in post.comments.all %}
     {% if user.is_authenticated or comment.approved_comment %}
@@ -43,5 +44,6 @@
 {% empty %}
     <p>No comments here yet :(</p>
 {% endfor %}
+-->
   
 {% endblock %}
